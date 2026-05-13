@@ -37,7 +37,7 @@ The connection is end-to-end relayed through a Cloudflare edge bridge, so your t
 
 ## Requirements
 
-- **Puku CLI v1.8.9 or later** installed and working (`puku-cli --version`)
+- **Puku CLI v1.8.10 or later** installed and working (`puku-cli --version`)
 - **Puku mobile app** installed on your device (iOS or Android)
 - An active `puku-cli` session open in a terminal on your machine
 - Internet connectivity on both the machine running the CLI and the mobile device
