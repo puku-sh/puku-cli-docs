@@ -61,7 +61,7 @@ The CLI will:
 
 Example output:
 
-![alt text](./asset/image.png)
+![alt text](../asset/image.png)
 
 Keep this terminal window open. The session is live for as long as the CLI process is running.
 
@@ -77,20 +77,20 @@ Keep this terminal window open. The session is live for as long as the CLI proce
 
 Once the handshake completes, the terminal status line updates to:
 
-![alt text](./asset/image-1.png)
+![alt text](../asset/image-1.png)
 
 The app's chat screen opens.
 
-![alt text](./asset/image-2.png)
+![alt text](../asset/image-2.png)
 
 Then press the Esc button in the terminal, it show like this:
 
-![alt text](./asset/image-3.png)
+![alt text](../asset/image-3.png)
 
 Then start chatting in the App:
 
 
-![alt text](./asset/image-4.png)
+![alt text](../asset/image-4.png)
 
 ## Using the app
 
@@ -98,7 +98,7 @@ Then start chatting in the App:
 
 Type your message in the input field at the bottom of the chat screen and tap the send button (or press Return on a hardware keyboard). Messages are forwarded to the CLI in real time. The agent's streamed response appears in the chat view as it arrives.
 
-![alt text](./asset/image-5.png)
+![alt text](../asset/image-5.png)
 
 ---
 
@@ -112,7 +112,7 @@ When the agent is processing a complex request, the app displays a thinking indi
 
 When the CLI needs to execute a tool that requires confirmation (file deletion, shell command with side effects, etc.), a **permission prompt** appears in the app as an action card:
 
-![alt text](./asset/image-6.png)
+![alt text](../asset/image-6.png)
 
 Tap **Allow** or **Deny** to send your decision back to the CLI. The terminal reflects your choice immediately and proceeds (or halts) accordingly.
 
