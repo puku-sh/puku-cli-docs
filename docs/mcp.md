@@ -22,7 +22,7 @@ puku-cli connects to each configured server at startup, fetches its capabilities
 
 ```bash
 # Local subprocess (stdio)
-puku-cli mcp add my-server npx -y @my-org/my-mcp-server
+puku-cli mcp add my-server -- npx -y @my-org/my-mcp-server
 
 # Remote HTTP server
 puku-cli mcp add my-api --transport http https://api.example.com/mcp
@@ -54,16 +54,16 @@ puku-cli mcp add <name> <command> [args...]
 
 ```bash
 # npm package
-puku-cli mcp add filesystem npx -y @modelcontextprotocol/server-filesystem /path/to/dir
+puku-cli mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path/to/dir
 
 # Python script
-puku-cli mcp add my-tool python /path/to/server.py
+puku-cli mcp add my-tool -- python /path/to/server.py
 
 # Compiled binary
-puku-cli mcp add db-server /usr/local/bin/mcp-postgres --database mydb
+puku-cli mcp add db-server -- /usr/local/bin/mcp-postgres --database mydb
 
 # With environment variables
-puku-cli mcp add vault-server npx -y @my-org/vault-mcp \
+puku-cli mcp add vault-server -- npx -y @my-org/vault-mcp \
   -e VAULT_ADDR=https://vault.example.com \
   -e VAULT_TOKEN=s.xxxxxxx
 ```
@@ -101,6 +101,16 @@ puku-cli mcp add my-api --transport http https://api.example.com/mcp \
 
 puku-cli opens your browser for the OAuth flow, then caches the token in the platform keychain (macOS Keychain, Windows Credential Manager, or Linux `pass`). Tokens are refreshed automatically.
 
+**Fixed redirect port for OAuth:**
+
+```bash
+puku-cli mcp add my-api --transport http https://api.example.com/mcp \
+  --client-id my-id \
+  --callback-port 8080
+```
+
+The redirect URI will be `http://localhost:8080/callback`.
+
 **Options for remote transport:**
 
 | Flag | Description |
@@ -113,11 +123,8 @@ puku-cli opens your browser for the OAuth flow, then caches the token in the pla
 
 ### WebSocket
 
-```bash
-puku-cli mcp add my-server --transport ws wss://ws.example.com/mcp
-```
+> ⁠Websocket is not currently available. Available transports: stdio, http, sse
 
----
 
 ## Managing servers
 
@@ -128,6 +135,14 @@ puku-cli mcp list
 ```
 
 Shows each server's name, transport, scope, and whether it is enabled.
+
+### Get server details
+
+```bash
+puku-cli mcp get <name>
+```
+
+Shows detailed information about a specific server.
 
 ### Remove a server
 
