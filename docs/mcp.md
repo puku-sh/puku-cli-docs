@@ -470,7 +470,7 @@ Exposes read and write tools for the specified directory.
 ### GitHub
 
 ```bash
-puku-cli mcp add github npx -y @modelcontextprotocol/server-github \
+puku-cli mcp add github -- npx -y @modelcontextprotocol/server-github \
   -e GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxxx
 ```
 
@@ -479,7 +479,7 @@ Exposes tools for issues, pull requests, repositories, and search.
 ### PostgreSQL
 
 ```bash
-puku-cli mcp add postgres npx -y @modelcontextprotocol/server-postgres \
+puku-cli mcp add postgres -- npx -y @modelcontextprotocol/server-postgres \
   postgresql://user:pass@localhost/mydb
 ```
 
@@ -488,7 +488,7 @@ Exposes query and schema tools for your database.
 ### Brave Search
 
 ```bash
-puku-cli mcp add brave-search npx -y @modelcontextprotocol/server-brave-search \
+puku-cli mcp add brave-search -- npx -y @modelcontextprotocol/server-brave-search \
   -e BRAVE_API_KEY=your-key
 ```
 
@@ -497,7 +497,7 @@ Exposes a web search tool using the Brave Search API.
 ### Custom Python server
 
 ```bash
-puku-cli mcp add my-tool python /path/to/server.py --port 8080
+puku-cli mcp add my-tool -- python /path/to/server.py --port 8080
 ```
 
 ---
@@ -555,16 +555,20 @@ The refresh token may have been revoked. Clear the cached credentials from your 
 
 | Command | Description |
 |---|---|
-| `puku-cli mcp add <name> <cmd> [args]` | Add a stdio server |
+| `puku-cli mcp add <name> -- <cmd> [args]` | Add a stdio server (use `--` to separate puku-cli flags from command args) |
 | `puku-cli mcp add <name> --transport http <url>` | Add an HTTP server |
 | `puku-cli mcp add <name> --transport sse <url>` | Add an SSE server |
-| `puku-cli mcp add <name> --transport ws <url>` | Add a WebSocket server |
-| `puku-cli mcp remove <name>` | Remove a server |
+| `puku-cli mcp add <name> <json>` | Add a server with JSON string (`add-json`) |
+| `puku-cli mcp get <name>` | Get details about a server |
 | `puku-cli mcp list` | List all configured servers |
+| `puku-cli mcp remove <name>` | Remove a server |
 | `puku-cli mcp doctor [name]` | Diagnose server health |
 | `puku-cli mcp doctor --config-only` | Check config without live tests |
-| `puku-cli mcp xaa setup` | Configure enterprise IdP for XAA |
-| `puku-cli mcp import-desktop` | Import servers from Claude Desktop |
+| `puku-cli mcp doctor --json` | Output diagnostics as JSON |
+| `puku-cli mcp doctor --scope <scope>` | Filter diagnostics by scope |
+| `puku-cli mcp add-from-puku-desktop` | Import servers from Puku Desktop |
+| `puku-cli mcp serve` | Start the Puku MCP server |
+| `puku-cli mcp reset-project-choices` | Reset approved/rejected project servers |
 
 ### Session commands
 
@@ -582,7 +586,6 @@ The refresh token may have been revoked. Clear the cached credentials from your 
 | `stdio` | Local subprocess — any executable that speaks MCP over stdin/stdout |
 | `http` | Remote server with streamable HTTP |
 | `sse` | Remote server with Server-Sent Events |
-| `ws` | Remote server with WebSocket |
 
 ### Connection states
 
